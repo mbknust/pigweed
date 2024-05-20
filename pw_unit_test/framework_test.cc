@@ -326,5 +326,27 @@ TEST(TestSuiteTearDown, MakeSureItRan) {
   EXPECT_EQ(SetUpAndTearDown::value, 8);
 }
 
+int some_number = 1;
+
+TEST(TestSuiteOrdering1, NumberIs1) {
+  ASSERT_EQ(some_number, 1);
+  some_number++;
+}
+
+TEST(TestSuiteOrdering2, NumberIs3) {
+  ASSERT_EQ(some_number, 3);
+  some_number++;
+}
+
+TEST(TestSuiteOrdering1, NumberIs2) {
+  ASSERT_EQ(some_number, 2);
+  some_number++;
+}
+
+TEST(TestSuiteOrdering2, NumberIs4) {
+  ASSERT_EQ(some_number, 4);
+  some_number++;
+}
+
 }  // namespace
 }  // namespace pw
